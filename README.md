@@ -132,6 +132,8 @@ New Test Suite: The new class (e.g., ProductListFunctionalTest) can extend BaseF
 
 </details>
 
+</details>
+
 <details>
 <summary><h2>Module 2 - CI/CD & DevOps</h2></summary>
 
