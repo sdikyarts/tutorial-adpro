@@ -109,7 +109,7 @@ In implementing the edit and delete features for the E-Shop application, I have 
 
 1. **Error Handling**
    - Implement more robust error handling for cases like product not found
-   - Add proper validation messages for user input
+   - Add proper validation messages for user input 
 </details>
 
 <details>
