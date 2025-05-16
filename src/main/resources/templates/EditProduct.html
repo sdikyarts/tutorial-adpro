@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-    <h3>Edit Product</h3>
+    <h3>Edit Product </h3>
 
     <form th:action="@{/product/edit/{id}(id=${product.productId})}" th:object="${product}" method="post">
         <input type="hidden" name="_method" value="put" />
