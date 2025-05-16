@@ -131,4 +131,19 @@ New Test Suite: The new class (e.g., ProductListFunctionalTest) can extend BaseF
 </details>
 
 </details>
+
+</details>
+
+<details>
+<summary><h2>Module 2 - CI/CD & DevOps</h2></summary>
+
+<details>
+<summary>Reflection</summary>
+1. Code Quality Issues Fixed & Strategy:
+I fixed issues such as inconsistent naming conventions, unused imports, and missing or unclear comments. My strategy was to use automated code analysis tools (like SonarQube or built-in linters) to identify problems, then refactor the code for clarity, maintainability, and adherence to best practices. I also ensured that all tests passed after each change to maintain code reliability.
+
+2. CI/CD Workflow Reflection:
+Yes, the current CI/CD implementation meets the definition of Continuous Integration and Continuous Deployment. Every code change is automatically tested and analyzed for quality before being merged, ensuring that the main branch is always in a deployable state. Successful builds are automatically deployed to the PaaS, reducing manual intervention and enabling rapid, reliable delivery of new features and fixes. This process increases confidence in code changes and accelerates the development lifecycle.
+</details>
+
 </details>
