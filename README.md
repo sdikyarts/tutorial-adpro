@@ -115,7 +115,18 @@ In implementing the edit and delete features for the E-Shop application, I have 
 <details>
 <summary><h3>Reflection 2</h3></summary>
 
-[Your Reflection 2 content will go here. You can follow a similar structure to Reflection 1 with your new content.]
+1. After Writing Unit Tests
+The process ensures better code reliability by catching issues early. How many unit tests per class? It depends on the class's complexity. Aim for at least one test per method or major functionality, covering edge cases, typical cases, and failure scenarios. How to ensure tests are enough? Use code coverage as a metric. It measures the percentage of source code executed during testing (e.g., lines, branches, or methods). Tools like JaCoCo or Clover can help. Aim for high coverage (e.g., 80%+), but focus on meaningful tests, not just hitting a number. Does 100% code coverage mean no bugs? No. 100% coverage means all code paths were executed, but it doesn’t guarantee correct behavior, edge cases, or integration issues. Bugs can still exist due to logic errors or untested scenarios.
+2. Creating CreateProductFunctionalTest.java and a New Functional Test Suite
+Cleanliness of the new functional test suite: Reusing the same setup procedures and instance variables as in HomePageFunctionalTest.java (e.g., serverPort, testBaseUrl, setupTest) introduces potential issues.
+Will it reduce code quality? Yes, due to code duplication. Copy-pasting setup logic across test classes violates the DRY (Don’t Repeat Yourself) principle, making the codebase harder to maintain.
+Potential clean code issues:
+Duplication: Repeated setup code in multiple test classes increases maintenance effort. If the setup logic changes, you’d need to update all classes.
+Scalability: Adding more test suites with the same approach will bloat the codebase with redundant code.
+Readability: Duplicated code makes it harder to understand the unique purpose of each test class.
+Improvements:
+Extract a Base Test Class: Create an abstract base class (e.g., BaseFunctionalTest) with shared setup logic, instance variables (serverPort, testBaseUrl), and the @BeforeEach method. Both HomePageFunctionalTest and the new test suite can extend this class.
+New Test Suite: The new class (e.g., ProductListFunctionalTest) can extend BaseFunctionalTest and focus only on verifying the product list count, avoiding duplication.
 
 </details>
 
