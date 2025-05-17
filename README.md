@@ -177,3 +177,17 @@ Not applying SOLID principles leads to code that is hard to maintain and extend.
 </details>
 
 </details>
+
+<details>
+<summary><h2>Module 4 - Refactoring and TDD</h2></summary>
+
+<details>
+<summary>Reflection</summary>
+
+1. TDD Flow Reflection (Percival, 2017):
+The TDD flow was useful because it ensured that code was only written to satisfy failing tests, leading to focused and reliable implementations. It helped clarify requirements and catch errors early. However, next time, I should ensure tests cover more edge cases and possible failure scenarios to further improve robustness.
+2. F.I.R.S.T. Principle Reflection:
+The unit tests mostly followed the F.I.R.S.T. principles (Fast, Independent, Repeatable, Self-validating, Timely). They run quickly, do not depend on each other, and clearly pass or fail. For improvement, I should always double-check that tests are fully independent (no shared state) and are written as soon as requirements are clarified, not after implementation.
+</details>
+
+</details>
