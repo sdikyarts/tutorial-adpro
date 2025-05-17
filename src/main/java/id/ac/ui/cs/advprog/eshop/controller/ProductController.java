@@ -2,9 +2,10 @@ package id.ac.ui.cs.advprog.eshop.controller;
 
 import id.ac.ui.cs.advprog.eshop.model.Car;
 import id.ac.ui.cs.advprog.eshop.model.Product;
-import id.ac.ui.cs.advprog.eshop.service.CarServiceImpl;
+import id.ac.ui.cs.advprog.eshop.service.CarService;
 import id.ac.ui.cs.advprog.eshop.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,13 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
-    @Autowired
-    private ProductService service;
+    protected static final Logger logger = LoggerFactory.getLogger(ProductController.class);
+    private static final String REDIRECT_LIST = "redirect:list";
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
 
     @GetMapping("/create")
     public String createProductPage(Model model) {
@@ -28,7 +34,7 @@ public class ProductController {
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
         service.create(product);
-        return "redirect:list";
+        return REDIRECT_LIST;
     }
     
     @GetMapping("/list")
@@ -47,23 +53,28 @@ public class ProductController {
 
     @PostMapping("/edit")
     public String editProductPost(@ModelAttribute Product product, Model model) {
-        System.out.println(product.getProductId());
+        logger.info("Editing product with ID: {}", product.getProductId());
         service.update(product.getProductId(), product);
-        return "redirect:list";
+        return REDIRECT_LIST;
     }
 
     @PostMapping("/delete")
     public String deleteProduct(@RequestParam("productId") String productId) {
         service.deleteProductById(productId);
-        return "redirect:list";
+        return REDIRECT_LIST;
     }
 }
 
 @Controller
 @RequestMapping("/car")
 class CarController extends ProductController {
-    @Autowired
-    private CarServiceImpl carservice;
+    private static final String REDIRECT_LIST_CAR = "redirect:listCar";
+    private final CarService carservice;
+
+    public CarController(ProductService service, CarService carservice) {
+        super(service);
+        this.carservice = carservice;
+    }
 
     @GetMapping("/createCar")
     public String createCarPage(Model model) {
@@ -75,7 +86,7 @@ class CarController extends ProductController {
     @PostMapping("/createCar")
     public String createCarPost(@ModelAttribute Car car, Model model) {
         carservice.create(car);
-        return "redirect:listCar";
+        return REDIRECT_LIST_CAR;
     }
 
     @GetMapping("/listCar")
@@ -94,14 +105,14 @@ class CarController extends ProductController {
 
     @PostMapping("/editCar")
     public String editCarPost(@ModelAttribute Car car, Model model) {
-        System.out.println(car.getCarId());
+        logger.info("Editing car with ID: {}", car.getCarId());
         carservice.update(car.getCarId(), car);
-        return "redirect:listCar";
+        return REDIRECT_LIST_CAR;
     }
 
     @PostMapping("/deleteCar")
     public String deleteCar(@RequestParam("carId") String carId) {
         carservice.deleteCarById(carId);
-        return "redirect:listCar";
+        return REDIRECT_LIST_CAR;
     }
 }

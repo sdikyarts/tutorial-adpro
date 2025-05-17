@@ -139,11 +139,41 @@ New Test Suite: The new class (e.g., ProductListFunctionalTest) can extend BaseF
 
 <details>
 <summary>Reflection</summary>
+
 1. Code Quality Issues Fixed & Strategy:
 I fixed issues such as inconsistent naming conventions, unused imports, and missing or unclear comments. My strategy was to use automated code analysis tools (like SonarQube or built-in linters) to identify problems, then refactor the code for clarity, maintainability, and adherence to best practices. I also ensured that all tests passed after each change to maintain code reliability.
 
 2. CI/CD Workflow Reflection:
 Yes, the current CI/CD implementation meets the definition of Continuous Integration and Continuous Deployment. Every code change is automatically tested and analyzed for quality before being merged, ensuring that the main branch is always in a deployable state. Successful builds are automatically deployed to the PaaS, reducing manual intervention and enabling rapid, reliable delivery of new features and fixes. This process increases confidence in code changes and accelerates the development lifecycle.
+</details>
+
+</details>
+
+<details>
+<summary><h2>Module 3 - Maintainability & OO Principles</h2></summary>
+
+<details>
+<summary>Reflection</summary>
+
+1. SOLID principles implementations
+I implement SOLID in ProductController.java
+- S - Single Responsibility Principle:
+Each controller (ProductController, CarController) is responsible only for handling HTTP requests and delegating business logic to services.
+- O - Open/Closed Principle:
+The controllers and services are open for extension (e.g., you can add new endpoints or service implementations) but closed for modification (existing logic does not need to change for new features).
+- L - Liskov Substitution Principle:
+CarController extends ProductController and can be used wherever a ProductController is expected, without breaking functionality.
+- I - Interface Segregation Principle:
+The controllers depend on focused service interfaces (ProductService, CarService), not on large, general-purpose interfaces.
+- D - Dependency Inversion Principle:
+High-level modules (controllers) depend on abstractions (service interfaces), not on concrete implementations.
+Dependencies are injected via constructors, not created inside the controllers.
+
+2.  Explain the advantages of applying SOLID principles to your project
+Applying SOLID principles makes your codebase easier to maintain, extend, and test. For example, using interfaces and constructor injection (Dependency Inversion) allows you to swap implementations or mock dependencies in tests effortlessly. Single Responsibility ensures each class has one clear purpose, reducing bugs and making changes safer. Open/Closed lets you add new features (like a new product type) without modifying existing, working code. Overall, SOLID leads to cleaner, more robust, and scalable software that adapts well to future requirements.
+
+3. Explain the disadvantages of not applying SOLID principles to your project
+Not applying SOLID principles leads to code that is hard to maintain and extend. For example, if controllers directly create service objects (violating Dependency Inversion), testing becomes difficult and changes require editing many files. Without Single Responsibility, classes become large and do too much, making bugs harder to find and fix. Ignoring Open/Closed means adding new features often breaks or changes existing code, increasing the risk of errors. Overall, the project becomes fragile, tightly coupled, and costly to adapt as requirements grow.
 </details>
 
 </details>

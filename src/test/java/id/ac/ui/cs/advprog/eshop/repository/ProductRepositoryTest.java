@@ -20,6 +20,7 @@ class ProductRepositoryTest {
 
     @BeforeEach
     void setUp() {
+        productRepository = new ProductRepository();
     }
 
     @Test
